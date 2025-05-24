@@ -1,0 +1,17 @@
+{
+  "addons": {
+    "zotero-robustlinks@mementoweb.org": {
+      "updates": [
+        {
+          "version": "3.0.0",
+          "update_link": "https://github.com/dawsonmv/Zotero-Gusto-extension/releases/download/v3.0.0/gusto-3.0.0.xpi",
+          "applications": {
+            "zotero": {
+              "strict_min_version": "7.0"
+            }
+          }
+        }
+      ]
+    }
+  }
+}
