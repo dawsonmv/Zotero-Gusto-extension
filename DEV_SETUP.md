@@ -16,12 +16,12 @@
 
 #### With Console and Cache Purge
 ```bash
-open -a "Zotero Beta" --args -P "Dev" -purgecaches -jsconsole
+open -a "Zotero Beta" --args -P "ZoteroDev" -purgecaches -jsconsole
 ```
 
 #### Normal Launch
 ```bash
-open -a "Zotero Beta" --args -P "Dev"
+open -a "Zotero Beta" --args -P "ZoteroDev"
 ```
 
 ### Development Workflow

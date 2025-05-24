@@ -1,0 +1,14 @@
+1748096875590	addons.xpi	WARN	Not converting unknown addon type undefined
+unreachable code after return statement util.js:205:5
+Missing resource in locale en-AU: branding/brand.ftl
+Missing resource in locale en-CA: branding/brand.ftl
+Missing resource in locale en-GB: integration.ftl
+Missing resource in locale en-NZ: branding/brand.ftl
+Missing resource in locale en-AU: browser/browserSets.ftl
+Missing resource in locale en-CA: browser/browserSets.ftl
+Missing resource in locale en-AU: devtools/client/toolbox.ftl
+Missing resource in locale en-NZ: browser/browserSets.ftl
+Missing resource in locale en-CA: devtools/client/toolbox.ftl
+Missing resource in locale en-NZ: devtools/client/toolbox.ftl
+DOMException: Could not get children of `/Users/dawsonvaldes/Library/Application Support/Zotero/Crash Reports/events': directory does not exist (NS_ERROR_FILE_NOT_FOUND) CrashManager.sys.mjs:728:17
+    _getUnprocessedEventsFiles resource://gre/modules/CrashManager.sys.mjs:728

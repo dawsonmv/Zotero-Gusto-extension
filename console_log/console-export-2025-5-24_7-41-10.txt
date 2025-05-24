@@ -1,0 +1,158 @@
+07:38:19.281 1748097499281	addons.xpi-utils	WARN	Add-on zoteroshortdoi@wiernik.org is not compatible with application version. 3
+07:38:19.284 1748097499284	addons.webextension.zotero-moment-o7@github.com	WARN	Loading extension 'zotero-moment-o7@github.com': Reading manifest: Warning processing bootstrap: An unexpected property was found in the WebExtension manifest.
+07:38:19.285 1748097499285	addons.xpi-utils	WARN	Add-on zotero-moment-o7@github.com is not compatible with application version. 3
+07:38:19.427 1748097499427	addons.xpi-utils	WARN	Add-on zoteroshortdoi@wiernik.org is not compatible with application version.
+07:38:19.427 1748097499427	addons.xpi-utils	WARN	Add-on zotero-moment-o7@github.com is not compatible with application version.
+07:38:19.428 1748097499428	addons.xpi-utils	WARN	Add-on zoteroshortdoi@wiernik.org is not compatible with application version.
+07:38:19.502 unreachable code after return statement util.js:205:5
+07:38:19.594 Missing resource in locale en-AU: branding/brand.ftl
+07:38:19.594 Missing resource in locale en-CA: branding/brand.ftl
+07:38:19.594 Missing resource in locale en-GB: integration.ftl
+07:38:19.594 Missing resource in locale en-NZ: branding/brand.ftl
+07:38:19.595 1748097499595	addons.xpi-utils	WARN	Add-on zotero-moment-o7@github.com is not compatible with application version.
+07:38:19.647 Missing resource in locale en-AU: browser/browserSets.ftl
+07:38:19.647 Missing resource in locale en-CA: browser/browserSets.ftl
+07:38:19.654 Missing resource in locale en-NZ: browser/browserSets.ftl
+07:38:19.871 1748097499871	addons.xpi-utils	WARN	Add-on zoteroshortdoi@wiernik.org is not compatible with application version.
+07:38:19.875 patching  getField zoteroinspire.js:376:22
+07:38:19.875 console.trace() zoteroinspire.js:380:20
+    log jar:file:///Users/dawsonvaldes/Library/Application Support/Zotero/Profiles/mlpqzw3d.default/extensions/zoteroinspire@itp.ac.cn.xpi!/content/scripts/zoteroinspire.js:380
+    setData jar:file:///Users/dawsonvaldes/Library/Application Support/Zotero/Profiles/mlpqzw3d.default/extensions/zoteroinspire@itp.ac.cn.xpi!/content/scripts/zoteroinspire.js:2282
+    FieldHookManager jar:file:///Users/dawsonvaldes/Library/Application Support/Zotero/Profiles/mlpqzw3d.default/extensions/zoteroinspire@itp.ac.cn.xpi!/content/scripts/zoteroinspire.js:2544
+    ZoteroToolkit jar:file:///Users/dawsonvaldes/Library/Application Support/Zotero/Profiles/mlpqzw3d.default/extensions/zoteroinspire@itp.ac.cn.xpi!/content/scripts/zoteroinspire.js:3951
+    ZoteroToolkit jar:file:///Users/dawsonvaldes/Library/Application Support/Zotero/Profiles/mlpqzw3d.default/extensions/zoteroinspire@itp.ac.cn.xpi!/content/scripts/zoteroinspire.js:3964
+    createZToolkit jar:file:///Users/dawsonvaldes/Library/Application Support/Zotero/Profiles/mlpqzw3d.default/extensions/zoteroinspire@itp.ac.cn.xpi!/content/scripts/zoteroinspire.js:4028
+    Addon jar:file:///Users/dawsonvaldes/Library/Application Support/Zotero/Profiles/mlpqzw3d.default/extensions/zoteroinspire@itp.ac.cn.xpi!/content/scripts/zoteroinspire.js:4832
+    <anonymous> jar:file:///Users/dawsonvaldes/Library/Application Support/Zotero/Profiles/mlpqzw3d.default/extensions/zoteroinspire@itp.ac.cn.xpi!/content/scripts/zoteroinspire.js:4843
+    <anonymous> jar:file:///Users/dawsonvaldes/Library/Application Support/Zotero/Profiles/mlpqzw3d.default/extensions/zoteroinspire@itp.ac.cn.xpi!/content/scripts/zoteroinspire.js:4862
+    startup jar:file:///Users/dawsonvaldes/Library/Application Support/Zotero/Profiles/mlpqzw3d.default/extensions/zoteroinspire@itp.ac.cn.xpi!/bootstrap.js:41
+07:38:19.875 patching  setField zoteroinspire.js:376:22
+07:38:19.875 console.trace() zoteroinspire.js:380:20
+    log jar:file:///Users/dawsonvaldes/Library/Application Support/Zotero/Profiles/mlpqzw3d.default/extensions/zoteroinspire@itp.ac.cn.xpi!/content/scripts/zoteroinspire.js:380
+    setData jar:file:///Users/dawsonvaldes/Library/Application Support/Zotero/Profiles/mlpqzw3d.default/extensions/zoteroinspire@itp.ac.cn.xpi!/content/scripts/zoteroinspire.js:2282
+    FieldHookManager jar:file:///Users/dawsonvaldes/Library/Application Support/Zotero/Profiles/mlpqzw3d.default/extensions/zoteroinspire@itp.ac.cn.xpi!/content/scripts/zoteroinspire.js:2544
+    ZoteroToolkit jar:file:///Users/dawsonvaldes/Library/Application Support/Zotero/Profiles/mlpqzw3d.default/extensions/zoteroinspire@itp.ac.cn.xpi!/content/scripts/zoteroinspire.js:3951
+    ZoteroToolkit jar:file:///Users/dawsonvaldes/Library/Application Support/Zotero/Profiles/mlpqzw3d.default/extensions/zoteroinspire@itp.ac.cn.xpi!/content/scripts/zoteroinspire.js:3964
+    createZToolkit jar:file:///Users/dawsonvaldes/Library/Application Support/Zotero/Profiles/mlpqzw3d.default/extensions/zoteroinspire@itp.ac.cn.xpi!/content/scripts/zoteroinspire.js:4028
+    Addon jar:file:///Users/dawsonvaldes/Library/Application Support/Zotero/Profiles/mlpqzw3d.default/extensions/zoteroinspire@itp.ac.cn.xpi!/content/scripts/zoteroinspire.js:4832
+    <anonymous> jar:file:///Users/dawsonvaldes/Library/Application Support/Zotero/Profiles/mlpqzw3d.default/extensions/zoteroinspire@itp.ac.cn.xpi!/content/scripts/zoteroinspire.js:4843
+    <anonymous> jar:file:///Users/dawsonvaldes/Library/Application Support/Zotero/Profiles/mlpqzw3d.default/extensions/zoteroinspire@itp.ac.cn.xpi!/content/scripts/zoteroinspire.js:4862
+    startup jar:file:///Users/dawsonvaldes/Library/Application Support/Zotero/Profiles/mlpqzw3d.default/extensions/zoteroinspire@itp.ac.cn.xpi!/bootstrap.js:41
+07:38:19.875 patching  isFieldOfBase zoteroinspire.js:376:22
+07:38:19.875 Initializing ToolkitGlobal modules zoteroinspire.js:376:22
+07:38:19.875 Initializing ToolkitGlobal modules zoteroinspire.js:376:22
+07:38:19.875
+<style id="prompt-style">
+zoteroinspire.js:376:22
+07:38:19.875
+<div style="position: fixed; left: 0…th: 100%; height: 100%;">
+zoteroinspire.js:376:22
+07:38:19.875
+<div style="display: none;">
+zoteroinspire.js:376:22
+07:38:19.875 console.trace() zoteroinspire.js:380:20
+    log jar:file:///Users/dawsonvaldes/Library/Application Support/Zotero/Profiles/mlpqzw3d.default/extensions/zoteroinspire@itp.ac.cn.xpi!/content/scripts/zoteroinspire.js:380
+    createElement jar:file:///Users/dawsonvaldes/Library/Application Support/Zotero/Profiles/mlpqzw3d.default/extensions/zoteroinspire@itp.ac.cn.xpi!/content/scripts/zoteroinspire.js:790
+    createHTML jar:file:///Users/dawsonvaldes/Library/Application Support/Zotero/Profiles/mlpqzw3d.default/extensions/zoteroinspire@itp.ac.cn.xpi!/content/scripts/zoteroinspire.js:3092
+    initializeUI jar:file:///Users/dawsonvaldes/Library/Application Support/Zotero/Profiles/mlpqzw3d.default/extensions/zoteroinspire@itp.ac.cn.xpi!/content/scripts/zoteroinspire.js:3087
+    Prompt jar:file:///Users/dawsonvaldes/Library/Application Support/Zotero/Profiles/mlpqzw3d.default/extensions/zoteroinspire@itp.ac.cn.xpi!/content/scripts/zoteroinspire.js:3080
+    PromptManager jar:file:///Users/dawsonvaldes/Library/Application Support/Zotero/Profiles/mlpqzw3d.default/extensions/zoteroinspire@itp.ac.cn.xpi!/content/scripts/zoteroinspire.js:3722
+    ZoteroToolkit jar:file:///Users/dawsonvaldes/Library/Application Support/Zotero/Profiles/mlpqzw3d.default/extensions/zoteroinspire@itp.ac.cn.xpi!/content/scripts/zoteroinspire.js:3953
+    ZoteroToolkit jar:file:///Users/dawsonvaldes/Library/Application Support/Zotero/Profiles/mlpqzw3d.default/extensions/zoteroinspire@itp.ac.cn.xpi!/content/scripts/zoteroinspire.js:3964
+    createZToolkit jar:file:///Users/dawsonvaldes/Library/Application Support/Zotero/Profiles/mlpqzw3d.default/extensions/zoteroinspire@itp.ac.cn.xpi!/content/scripts/zoteroinspire.js:4028
+    Addon jar:file:///Users/dawsonvaldes/Library/Application Support/Zotero/Profiles/mlpqzw3d.default/extensions/zoteroinspire@itp.ac.cn.xpi!/content/scripts/zoteroinspire.js:4832
+    <anonymous> jar:file:///Users/dawsonvaldes/Library/Application Support/Zotero/Profiles/mlpqzw3d.default/extensions/zoteroinspire@itp.ac.cn.xpi!/content/scripts/zoteroinspire.js:4843
+    <anonymous> jar:file:///Users/dawsonvaldes/Library/Application Support/Zotero/Profiles/mlpqzw3d.default/extensions/zoteroinspire@itp.ac.cn.xpi!/content/scripts/zoteroinspire.js:4862
+    startup jar:file:///Users/dawsonvaldes/Library/Application Support/Zotero/Profiles/mlpqzw3d.default/extensions/zoteroinspire@itp.ac.cn.xpi!/bootstrap.js:41
+07:38:19.876
+<input class="prompt-input" type="text" placeholder="Select a command...">
+zoteroinspire.js:376:22
+07:38:19.876
+<div class="cta">
+zoteroinspire.js:376:22
+07:38:19.876
+<div class="input-container">
+zoteroinspire.js:376:22
+07:38:19.876
+<div class="commands-containers">
+zoteroinspire.js:376:22
+07:38:19.876 console.trace() zoteroinspire.js:380:20
+    log jar:file:///Users/dawsonvaldes/Library/Application Support/Zotero/Profiles/mlpqzw3d.default/extensions/zoteroinspire@itp.ac.cn.xpi!/content/scripts/zoteroinspire.js:380
+    createElement jar:file:///Users/dawsonvaldes/Library/Application Support/Zotero/Profiles/mlpqzw3d.default/extensions/zoteroinspire@itp.ac.cn.xpi!/content/scripts/zoteroinspire.js:790
+    subElements jar:file:///Users/dawsonvaldes/Library/Application Support/Zotero/Profiles/mlpqzw3d.default/extensions/zoteroinspire@itp.ac.cn.xpi!/content/scripts/zoteroinspire.js:785
+    createElement jar:file:///Users/dawsonvaldes/Library/Application Support/Zotero/Profiles/mlpqzw3d.default/extensions/zoteroinspire@itp.ac.cn.xpi!/content/scripts/zoteroinspire.js:783
+    createHTML jar:file:///Users/dawsonvaldes/Library/Application Support/Zotero/Profiles/mlpqzw3d.default/extensions/zoteroinspire@itp.ac.cn.xpi!/content/scripts/zoteroinspire.js:3118
+    initializeUI jar:file:///Users/dawsonvaldes/Library/Application Support/Zotero/Profiles/mlpqzw3d.default/extensions/zoteroinspire@itp.ac.cn.xpi!/content/scripts/zoteroinspire.js:3087
+    Prompt jar:file:///Users/dawsonvaldes/Library/Application Support/Zotero/Profiles/mlpqzw3d.default/extensions/zoteroinspire@itp.ac.cn.xpi!/content/scripts/zoteroinspire.js:3080
+    PromptManager jar:file:///Users/dawsonvaldes/Library/Application Support/Zotero/Profiles/mlpqzw3d.default/extensions/zoteroinspire@itp.ac.cn.xpi!/content/scripts/zoteroinspire.js:3722
+    ZoteroToolkit jar:file:///Users/dawsonvaldes/Library/Application Support/Zotero/Profiles/mlpqzw3d.default/extensions/zoteroinspire@itp.ac.cn.xpi!/content/scripts/zoteroinspire.js:3953
+    ZoteroToolkit jar:file:///Users/dawsonvaldes/Library/Application Support/Zotero/Profiles/mlpqzw3d.default/extensions/zoteroinspire@itp.ac.cn.xpi!/content/scripts/zoteroinspire.js:3964
+    createZToolkit jar:file:///Users/dawsonvaldes/Library/Application Support/Zotero/Profiles/mlpqzw3d.default/extensions/zoteroinspire@itp.ac.cn.xpi!/content/scripts/zoteroinspire.js:4028
+    Addon jar:file:///Users/dawsonvaldes/Library/Application Support/Zotero/Profiles/mlpqzw3d.default/extensions/zoteroinspire@itp.ac.cn.xpi!/content/scripts/zoteroinspire.js:4832
+    <anonymous> jar:file:///Users/dawsonvaldes/Library/Application Support/Zotero/Profiles/mlpqzw3d.default/extensions/zoteroinspire@itp.ac.cn.xpi!/content/scripts/zoteroinspire.js:4843
+    <anonymous> jar:file:///Users/dawsonvaldes/Library/Application Support/Zotero/Profiles/mlpqzw3d.default/extensions/zoteroinspire@itp.ac.cn.xpi!/content/scripts/zoteroinspire.js:4862
+    startup jar:file:///Users/dawsonvaldes/Library/Application Support/Zotero/Profiles/mlpqzw3d.default/extensions/zoteroinspire@itp.ac.cn.xpi!/bootstrap.js:41
+07:38:19.876
+<span class="key">
+zoteroinspire.js:376:22
+07:38:19.876
+<span>
+zoteroinspire.js:376:22
+07:38:19.876
+<div class="instruction">
+zoteroinspire.js:376:22
+07:38:19.876
+<span class="key">
+zoteroinspire.js:376:22
+07:38:19.876
+<span>
+zoteroinspire.js:376:22
+07:38:19.876
+<div class="instruction">
+zoteroinspire.js:376:22
+07:38:19.876
+<span class="key">
+zoteroinspire.js:376:22
+07:38:19.876
+<span>
+zoteroinspire.js:376:22
+07:38:19.876
+<div class="instruction">
+zoteroinspire.js:376:22
+07:38:19.876
+<div class="instructions">
+zoteroinspire.js:376:22
+07:38:19.876
+<div id="zotero-plugin-toolkit-prompt" class="prompt-container">
+zoteroinspire.js:376:22
+07:38:19.876 Component returned failure code: 0x80520012 (NS_ERROR_FILE_NOT_FOUND) [nsIXPCComponents_Utils.import] bootstrap.js:34
+07:38:19.876 Plugin pmcid-fetcher@iris-advies.com is missing bootstrap method 'startup'
+07:38:19.882 Missing resource in locale en-CA: branding/brand.ftl
+07:38:19.882 Missing resource in locale en-AU: branding/brand.ftl
+07:38:19.882 Missing resource in locale en-NZ: branding/brand.ftl
+07:38:19.882 Missing resource in locale en-GB: integration.ftl
+07:38:19.889 Missing resource in locale en-AU: browser/browserSets.ftl
+07:38:19.890 Missing resource in locale en-CA: browser/browserSets.ftl
+07:38:19.890 Missing resource in locale en-NZ: browser/browserSets.ftl
+07:38:19.890 Missing resource in locale en-CA: browser/browserSets.ftl
+07:38:19.890 Missing resource in locale en-AU: browser/browserSets.ftl
+07:38:19.890 Missing resource in locale en-NZ: browser/browserSets.ftl
+07:38:19.901 patching  getField zoteroinspire.js:376:22
+07:38:19.901 patching  setField zoteroinspire.js:376:22
+07:38:19.901 patching  isFieldOfBase zoteroinspire.js:376:22
+07:38:19.904 Uncaught (in promise) undefined 2
+07:38:20.170 ItemTreeColumnManager: The 'defaultIn' property is deprecated. Use 'enabledTreeIDs' instead.
+07:38:20.170 ItemTreeColumnManager: The 'disableIn' property is deprecated. Use 'enabledTreeIDs' instead.
+07:38:20.171 1748097500171	addons.xpi-utils	WARN	Add-on zotero-moment-o7@github.com is not compatible with application version.
+07:38:32.615 Missing resource in locale en-CA: devtools/client/toolbox.ftl
+07:38:32.615 Missing resource in locale en-AU: devtools/client/toolbox.ftl
+07:38:32.615 Missing resource in locale en-NZ: devtools/client/toolbox.ftl
+07:38:32.675 Expected color but found ‘-moz-mac-secondaryhighlight’.  Error in parsing value for ‘background-color’.  Declaration dropped. zotero.css:1:501078
+07:38:32.676 Error in parsing value for ‘-moz-appearance’.  Declaration dropped. zotero.css:1:512381
+07:38:32.678 Unknown property ‘-moz-border-radius’.  Declaration dropped. codemirror.css:244:22
+07:38:32.679 Unknown property ‘-moz-binding’.  Declaration dropped. overlay.css:6:15
+07:38:32.680 stylesheets: fetch from cache returned non-css content-type text/plain for chrome://zotero-platform-version/content/style.css, trying without cache. stylesheet-utils.js:110:15
+07:38:32.686 Expected color but found ‘-moz-mac-secondaryhighlight’.  Error in parsing value for ‘background-color’.  Declaration dropped. zotero.css:1:501078
+07:38:32.686 Error in parsing value for ‘-moz-appearance’.  Declaration dropped. zotero.css:1:512381
+07:39:16.467 DOMException: Could not get children of `/Users/dawsonvaldes/Library/Application Support/Zotero/Crash Reports/events': directory does not exist (NS_ERROR_FILE_NOT_FOUND) CrashManager.sys.mjs:728:17
+07:40:57.156 <Provider> does not support changing `store` on the fly. It is most likely that you see this error because you updated to Redux 2.x and React Redux 2.x which no longer hot reload reducers automatically. See https://github.com/reactjs/react-redux/releases/tag/v2.0.0 for the migration instructions. react-redux.js:881:13
