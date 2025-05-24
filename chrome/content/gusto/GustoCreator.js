@@ -68,13 +68,13 @@ Zotero.GustoCreator = {
         var notice = "";
 
         if (archive === null ) {
-            api_url = "https://gusto.mementoweb.org/api/?" + "url=" + encodeURIComponent(url);
+            api_url = "https://robustlinks.mementoweb.org/api/?" + "url=" + encodeURIComponent(url);
         } else {
-            api_url = "https://gusto.mementoweb.org/api/?" + "archive=" + encodeURIComponent(archive) + "&url=" + encodeURIComponent(url);
+            api_url = "https://robustlinks.mementoweb.org/api/?" + "archive=" + encodeURIComponent(archive) + "&url=" + encodeURIComponent(url);
         }
 
         // for testing
-        // api_url = "https://gusto.mementoweb.org/apii/?" + "archive=testfailarchive&url=" +encodeURIComponent(url);
+        // api_url = "https://robustlinks.mementoweb.org/apii/?" + "archive=testfailarchive&url=" +encodeURIComponent(url);
 
         if ( urir_shortcircuit === true ){
             api_url = api_url + '&urir_shortcircuit=True';
@@ -122,20 +122,20 @@ Zotero.GustoCreator = {
                 // notetext += '<script type="text/javascript" src="https://doi.org/10.25776/h1fa-7a28"></script>';
                 // notetext += '</head>';
 
-                notetext += "Original URL: " + jdata["gusto_links_html"]["original_url_as_href"];
+                notetext += "Original URL: " + jdata["robust_links_html"]["original_url_as_href"];
                 notetext += "<br>";
-                notetext += "Memento URL: " + jdata["gusto_links_html"]["memento_url_as_href"];
+                notetext += "Memento URL: " + jdata["robust_links_html"]["memento_url_as_href"];
 
                 notetext += "<hr>";
                 notetext += "<strong>Step 1: If you would like to include this Gusto Link in your web page, copy the appropriate HTML snippet below.</strong>"
                 notetext += "<hr>";
                 notetext += "Copy this snippet if you want the link text to lead to the live web resource <" + jdata['data-originalurl'] + ">.";
                 notetext += "<br><br>";
-                notetext += jdata["gusto_links_html"]["original_url_as_href"].replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+                notetext += jdata["robust_links_html"]["original_url_as_href"].replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
                 notetext += "<hr>";
                 notetext += "Copy this snippet if you want the link text to lead to the memento <" + jdata['data-versionurl'] + ">.";
                 notetext += "<br><br>";
-                notetext += jdata["gusto_links_html"]["memento_url_as_href"].replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");;
+                notetext += jdata["robust_links_html"]["memento_url_as_href"].replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");;
                 notetext += "<hr>";
                 notetext += "<strong>Step 2: If you would like to make your Gusto Links actionable, include this HTML in your web page, preferably inside the HEAD tag.</strong>";
                 notetext += "<br><br>";
