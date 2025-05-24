@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<?xml-stylesheet href="chrome://zotero-platform/content/preferences.css"?>
+
+<!DOCTYPE window SYSTEM "chrome://gusto/locale/options.dtd">
+
+<prefwindow id="gusto-prefs"
+    title="&gusto.menuitem;"
+    xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+    onload="updatePreferenceWindow('all');"
+    >
+
+    <prefpane label="&gusto.preferences.title;" id="gusto-prefpane">
+        <preferences>
+            <preference id="pref-gusto-archiveonadd" name="extensions.gusto.archiveonadd" type="string"/>
+            <preference id="pref-gusto-whatarchive" name="extensions.gusto.whatarchive" type="string"/>
+            <preference id="pref-gusto-alwaysurir" name="extensions.gusto.alwaysurir" type="string"/>
+        </preferences>
+
+        <tabbox id="gusto-tabbox">
+            <tabpanel orient="vertical">
+                <caption label="&gusto.preferences.archiveonadd;" />
+                <radiogroup id="id-gusto-archiveonadd" preference="pref-gusto-archiveonadd">
+                    <radio label="&gusto.preferences.yes.label;" value="yes" selected="true" />
+                    <radio label="&gusto.preferences.no.label;" value="no" />
+                </radiogroup>
+                <separator/>
+                <caption label="&gusto.preferences.whicharchive;" />
+                <radiogroup id="id-gusto-whicharchive" preference="pref-gusto-whatarchive">
+                    <radio label="&gusto.preferences.random.label;" value="random" selected="true" />
+                    <radio label="&gusto.preferences.archiveorg.label;" value="archive.org"/>
+                    <radio label="&gusto.preferences.archivetoday.label;" value="archive.today" />
+                </radiogroup>
+                <separator/>
+                <groupbox>
+                    <caption label="&gusto.preferences.advanced.title;" />
+                    <radiogroup id="id-gusto-alwaysurir" preference="pref-gusto-alwaysurir">
+                        <caption label="&gusto.preferences.always.urir;" />
+                        <radio label="&gusto.preferences.yes.label;" value="yes"/>
+                        <radio label="&gusto.preferences.no.label;" value="no" selected="true" />
+                    </radiogroup>
+                </groupbox>
+            </tabpanel>
+        </tabbox>
+
+    </prefpane>
+
+</prefwindow>

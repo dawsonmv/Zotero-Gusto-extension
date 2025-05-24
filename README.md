@@ -3,7 +3,7 @@
 project_status=fresh-fork,pre-commit1
 
 Gusto is a Robust Links Extension for Zotero version 7
-organize and manage archived web-page-links to references for academic research papers
+organize and manage archived web-page-links to references for academic research papers using the Memento Web framework
 
 
 This project is based on an extension for Zotero v6

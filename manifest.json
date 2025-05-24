@@ -16,7 +16,7 @@
   },
   
   "icons": {
-    "48": "chrome/content/robustlinks/icon48.png",
-    "96": "chrome/content/robustlinks/icon96.png"
+    "48": "chrome/content/gusto/icon48.png",
+    "96": "chrome/content/gusto/icon96.png"
   }
 }

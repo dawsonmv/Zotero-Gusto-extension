@@ -7,8 +7,8 @@ authors:
 - family-names: "Klein"
   given-names: "Martin"
   orcid: "https://orcid.org/0000-0003-0130-2097"
-title: "Zotero Robust Links Extension: Create Robust Links from within Zotero"
-version: 2.0.0-20220320145937
+title: "Gusto - Robust Links Extension for Zotero: Create Robust Links from within Zotero"
+version: 3.0.0
 date-released: 2021-06-28
-url: "https://github.com/lanl/Zotero-Robust-Links-Extension"
-license-url: "https://github.com/lanl/Zotero-Robust-Links-Extension/blob/main/LICENSE"
+url: "https://github.com/dawsonmv/Zotero-Gusto-extension"
+license-url: "https://github.com/dawsonmv/Zotero-Gusto-extension/blob/main/LICENSE"

@@ -1,12 +1,12 @@
-<!ENTITY robustlinks.name               "Robust Links">
-<!ENTITY robustlinks.menuitem           "Robust Links Preferences...">
-<!ENTITY robustlinks.preferences.title    "Robust Links Preferences">
-<!ENTITY robustlinks.preferences.archiveonadd "Archive on add">
-<!ENTITY robustlinks.preferences.yes.label "Yes">
-<!ENTITY robustlinks.preferences.no.label "No">
-<!ENTITY robustlinks.preferences.whicharchive "Archive to use by default">
-<!ENTITY robustlinks.preferences.advanced.title    "Advanced Options - Use With Care">
-<!ENTITY robustlinks.preferences.always.urir "Always assume original resource">
-<!ENTITY robustlinks.preferences.archiveorg.label "Internet Archive">
-<!ENTITY robustlinks.preferences.archivetoday.label "Archive.Today">
-<!ENTITY robustlinks.preferences.random.label "random">
+<!ENTITY gusto.name               "Gusto">
+<!ENTITY gusto.menuitem           "Gusto Preferences...">
+<!ENTITY gusto.preferences.title    "Gusto Preferences">
+<!ENTITY gusto.preferences.archiveonadd "Archive on add">
+<!ENTITY gusto.preferences.yes.label "Yes">
+<!ENTITY gusto.preferences.no.label "No">
+<!ENTITY gusto.preferences.whicharchive "Archive to use by default">
+<!ENTITY gusto.preferences.advanced.title    "Advanced Options - Use With Care">
+<!ENTITY gusto.preferences.always.urir "Always assume original resource">
+<!ENTITY gusto.preferences.archiveorg.label "Internet Archive">
+<!ENTITY gusto.preferences.archivetoday.label "Archive.Today">
+<!ENTITY gusto.preferences.random.label "random">

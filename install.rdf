@@ -10,10 +10,10 @@
         em:version="3.0.0"
         em:type="2"
         em:creator="Shawn M. Jones"
-        em:description="Plugin for Robustifying links to web resources."
-        em:homepageURL="https://robustlinks.mementoweb.org"
+        em:description="Archive web references using Memento Web framework."
+        em:homepageURL="https://github.com/dawsonmv/Zotero-Gusto-extension"
         em:updateURL=""
-        em:optionsURL="chrome://robustlinks/content/options.xul"
+        em:optionsURL="chrome://gusto/content/options.xul"
         >
         <em:type>2</em:type>
         <em:targetApplication>

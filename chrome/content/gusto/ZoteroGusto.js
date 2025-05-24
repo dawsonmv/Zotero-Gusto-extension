@@ -1,4 +1,4 @@
-Zotero.RobustLinks = {
+Zotero.Gusto = {
   init: function () {
     // if an event involving an item occurs, notifierCallback is invoked.
     var notifierID = Zotero.Notifier.registerObserver(this.notifierCallback, [
@@ -23,7 +23,7 @@ Zotero.RobustLinks = {
       // if ( (event == 'add') || (event == 'modify') ) {
       if ((event == 'add') && (type == 'item')) {
 
-        archive_on_add = Zotero.Prefs.get('extensions.robustlinks.archiveonadd', true);
+        archive_on_add = Zotero.Prefs.get('extensions.gusto.archiveonadd', true);
 
         if ( typeof archive_on_add === 'undefined' ) {
           archive_on_add = 'yes';
@@ -39,7 +39,7 @@ Zotero.RobustLinks = {
 
           // we don't work with attachments (2) or notes (26)
           if (item.itemTypeID != 2 && item.itemTypeID != 26) {
-            archive_name = Zotero.Prefs.get('extensions.robustlinks.whatarchive', true);
+            archive_name = Zotero.Prefs.get('extensions.gusto.whatarchive', true);
 
             Zotero.debug("using default archive_name of " + archive_name);
 
@@ -51,7 +51,7 @@ Zotero.RobustLinks = {
               archive_name = null;
             }
 
-            Zotero.RobustLinksCreator.makeRobustLink(archive_name, item, false);
+            Zotero.GustoCreator.makeRobustLink(archive_name, item, false);
           }
 
         }
@@ -68,7 +68,7 @@ Zotero.RobustLinks = {
         featureStr = featureStr + modalStr;
 
         this._preferencesWindow =
-            window.openDialog('chrome://robustlinks/content/options.xul', 'robustlinks-prefs', featureStr);
+            window.openDialog('chrome://gusto/content/options.xul', 'gusto-prefs', featureStr);
     }
 
     this._preferencesWindow.focus();
@@ -76,4 +76,4 @@ Zotero.RobustLinks = {
 
 };
 
-window.addEventListener('load', Zotero.RobustLinks.init(), false);
+window.addEventListener('load', Zotero.Gusto.init(), false);
