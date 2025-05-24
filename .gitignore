@@ -1,3 +1,28 @@
+# Build output
+*.xpi
+
+# Debug/test files
+CHECK_*.js
+DEBUG_*.js
+ENABLE_*.js
+SIMPLE_*.js
+TEST_*.js
+
+# Console logs
+console_log/
+
+# OS files
 .DS_Store
-extension.xpi
-*.log
+Thumbs.db
+
+# Editor files
+*.swp
+*.swo
+*~
+
+# Node modules (if we add npm later)
+node_modules/
+
+# Development notes
+*.tmp
+*.bak

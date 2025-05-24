@@ -1,4 +1,2 @@
 content gusto chrome/content/gusto/
-
-overlay chrome://zotero/content/zoteroPane.xul chrome://gusto/content/overlay.xul
 locale gusto en-US chrome/locale/en-US/

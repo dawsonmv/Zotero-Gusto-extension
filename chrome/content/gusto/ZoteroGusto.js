@@ -3,256 +3,336 @@
  * Main extension class that handles initialization, window management, and core functionality
  */
 
-if (!Zotero.Gusto) {
-    Zotero.Gusto = function(config) {
-        this.id = config.id;
-        this.version = config.version;
-        this.rootURI = config.rootURI;
-        this.initialized = false;
-        this.windows = [];
-        this.notifierID = null;
+Zotero.Gusto = function() {
+    this.id = null;
+    this.version = null;
+    this.rootURI = null;
+    this.initialized = false;
+    this.addedElementIDs = [];
+    this.notifierID = null;
+};
+
+Zotero.Gusto.prototype = {
+    init({ id, version, rootURI }) {
+        if (this.initialized) return;
+        this.id = id;
+        this.version = version;
+        this.rootURI = rootURI;
+        this.initialized = true;
         
-        // Initialize the extension
-        this.init();
-    };
+        this.log('Initializing extension');
+        
+        // Register notifier for new items
+        this.notifierID = Zotero.Notifier.registerObserver(this.notifierCallback, ['item']);
+    },
     
-    Zotero.Gusto.prototype = {
-        /**
-         * Initialize the extension
-         */
-        init: function() {
-            if (this.initialized) return;
-            
-            Zotero.debug('Gusto: Initializing extension');
-            
-            // Register preferences defaults
-            this.registerPreferences();
-            
-            // Register notifier for new items
-            this.notifierID = Zotero.Notifier.registerObserver(this.notifierCallback, ['item']);
-            
-            this.initialized = true;
-            Zotero.debug('Gusto: Initialization complete');
-        },
+    log(msg) {
+        Zotero.debug("Gusto: " + msg);
+    },
+    
+    addToWindow(window) {
+        let doc = window.document;
         
-        /**
-         * Shutdown the extension
-         */
-        shutdown: function() {
-            Zotero.debug('Gusto: Shutting down');
-            
-            // Unregister notifier
-            if (this.notifierID) {
-                Zotero.Notifier.unregisterObserver(this.notifierID);
-                this.notifierID = null;
-            }
-            
-            // Clean up all windows
-            for (let win of this.windows) {
-                this.removeFromWindow(win);
-            }
-            this.windows = [];
-            
-            this.initialized = false;
-            Zotero.debug('Gusto: Shutdown complete');
-        },
+        // Use Fluent for localization
+        window.MozXULElement.insertFTLIfNeeded("gusto.ftl");
         
-        /**
-         * Register default preferences
-         */
-        registerPreferences: function() {
-            const defaults = {
-                'extensions.gusto.archiveonadd': 'yes',
-                'extensions.gusto.whatarchive': 'random',
-                'extensions.gusto.alwaysurir': 'no'
-            };
-            
-            for (let [pref, value] of Object.entries(defaults)) {
-                if (typeof Zotero.Prefs.get(pref) === 'undefined') {
-                    Zotero.Prefs.set(pref, value);
-                }
-            }
-        },
+        // Add context menu items
+        this.addContextMenuItems(window);
         
-        /**
-         * Called when main window loads
-         */
-        onMainWindowLoad: function(window) {
-            if (!window.ZoteroPane) return;
-            
-            Zotero.debug('Gusto: Adding to window');
-            this.windows.push(window);
-            this.addToWindow(window);
-        },
+        // Store reference for access from other parts of the code
+        window.Zotero.Gusto = this;
+    },
+    
+    addToAllWindows() {
+        var windows = Zotero.getMainWindows();
+        for (let win of windows) {
+            if (!win.ZoteroPane) continue;
+            this.addToWindow(win);
+        }
+    },
+    
+    storeAddedElement(elem) {
+        if (!elem.id) {
+            throw new Error("Element must have an id");
+        }
+        this.addedElementIDs.push(elem.id);
+    },
+    
+    removeFromWindow(window) {
+        var doc = window.document;
+        // Remove all elements added to DOM
+        for (let id of this.addedElementIDs) {
+            doc.getElementById(id)?.remove();
+        }
         
-        /**
-         * Called when main window unloads
-         */
-        onMainWindowUnload: function(window) {
-            Zotero.debug('Gusto: Removing from window');
-            this.removeFromWindow(window);
-            
-            let index = this.windows.indexOf(window);
-            if (index > -1) {
-                this.windows.splice(index, 1);
-            }
-        },
+        // Remove Fluent localization link if it exists
+        doc.querySelector('[href="gusto.ftl"]')?.remove();
         
-        /**
-         * Add extension elements to a window
-         */
-        addToWindow: function(window) {
-            let doc = window.document;
-            
-            // Add context menu items
-            this.addContextMenuItems(window);
-            
-            // Store reference for preferences dialog
-            window.Zotero.Gusto = this;
-        },
+        // Clean up references
+        if (window.Zotero && window.Zotero.Gusto) {
+            delete window.Zotero.Gusto;
+        }
+    },
+    
+    removeFromAllWindows() {
+        var windows = Zotero.getMainWindows();
+        for (let win of windows) {
+            if (!win.ZoteroPane) continue;
+            this.removeFromWindow(win);
+        }
         
-        /**
-         * Remove extension elements from a window
-         */
-        removeFromWindow: function(window) {
-            let doc = window.document;
-            
-            // Remove our menu items
-            let menuItems = doc.querySelectorAll('[id^="gusto-"]');
-            for (let item of menuItems) {
-                item.remove();
-            }
-            
-            // Clean up references
-            if (window.Zotero && window.Zotero.Gusto) {
-                delete window.Zotero.Gusto;
-            }
-        },
+        // Unregister notifier
+        if (this.notifierID) {
+            Zotero.Notifier.unregisterObserver(this.notifierID);
+            this.notifierID = null;
+        }
+    },
+    
+    async main() {
+        // Register default preferences
+        const defaults = {
+            'extensions.gusto.archiveonadd': 'yes',
+            'extensions.gusto.whatarchive': 'random',
+            'extensions.gusto.alwaysurir': 'no'
+        };
         
-        /**
-         * Add context menu items
-         */
-        addContextMenuItems: function(window) {
-            let doc = window.document;
-            
-            // Item context menu
-            let itemMenu = doc.getElementById('zotero-itemmenu');
-            if (itemMenu) {
-                // Add separator
-                let separator = doc.createXULElement('menuseparator');
-                separator.id = 'gusto-separator';
-                itemMenu.appendChild(separator);
-                
-                // Add menu with submenu
-                let menu = doc.createXULElement('menu');
-                menu.id = 'gusto-menu';
-                menu.setAttribute('label', 'Robustify This Resource');
-                menu.className = 'menu-iconic';
-                
-                let menuPopup = doc.createXULElement('menupopup');
-                
-                // Default archive option
-                let defaultItem = doc.createXULElement('menuitem');
-                defaultItem.setAttribute('label', 'Default Web Archive');
-                defaultItem.addEventListener('command', () => {
-                    Zotero.GustoCreator.makeRobustLink('default', null, true);
-                });
-                menuPopup.appendChild(defaultItem);
-                
-                // Any archive option
-                let anyItem = doc.createXULElement('menuitem');
-                anyItem.setAttribute('label', 'Any Web Archive');
-                anyItem.addEventListener('command', () => {
-                    Zotero.GustoCreator.makeRobustLink(null, null, true);
-                });
-                menuPopup.appendChild(anyItem);
-                
-                // Internet Archive option
-                let iaItem = doc.createXULElement('menuitem');
-                iaItem.setAttribute('label', 'Internet Archive');
-                iaItem.addEventListener('command', () => {
-                    Zotero.GustoCreator.makeRobustLink('archive.org', null, true);
-                });
-                menuPopup.appendChild(iaItem);
-                
-                // Archive.Today option
-                let atItem = doc.createXULElement('menuitem');
-                atItem.setAttribute('label', 'Archive.Today');
-                atItem.addEventListener('command', () => {
-                    Zotero.GustoCreator.makeRobustLink('archive.today', null, true);
-                });
-                menuPopup.appendChild(atItem);
-                
-                menu.appendChild(menuPopup);
-                itemMenu.appendChild(menu);
-            }
-            
-            // Tools menu
-            let toolsMenu = doc.getElementById('menu_ToolsPopup');
-            if (toolsMenu) {
-                let prefsItem = doc.createXULElement('menuitem');
-                prefsItem.id = 'gusto-preferences';
-                prefsItem.setAttribute('label', 'Gusto Preferences...');
-                prefsItem.addEventListener('command', () => {
-                    this.openPreferences(window);
-                });
-                
-                // Insert after Zotero preferences
-                let zoteroPrefs = doc.getElementById('menu_preferences');
-                if (zoteroPrefs && zoteroPrefs.nextSibling) {
-                    toolsMenu.insertBefore(prefsItem, zoteroPrefs.nextSibling);
-                } else {
-                    toolsMenu.appendChild(prefsItem);
-                }
-            }
-        },
-        
-        /**
-         * Open preferences dialog
-         */
-        openPreferences: function(window) {
-            if (!this._preferencesWindow || this._preferencesWindow.closed) {
-                let featureStr = 'chrome,titlebar,toolbar=yes,resizable,centerscreen,';
-                let modalStr = Services.prefs.getBoolPref('browser.preferences.instantApply') ? 'dialog=no' : 'modal';
-                featureStr = featureStr + modalStr;
-                
-                this._preferencesWindow = window.openDialog(
-                    'chrome://gusto/content/options.xul',
-                    'gusto-prefs',
-                    featureStr
-                );
-            }
-            
-            this._preferencesWindow.focus();
-        },
-        
-        /**
-         * Notifier callback for new items
-         */
-        notifierCallback: {
-            notify: async function(event, type, ids, extraData) {
-                if (event !== 'add' || type !== 'item') return;
-                
-                // Check if auto-archive is enabled
-                let archiveOnAdd = Zotero.Prefs.get('extensions.gusto.archiveonadd');
-                if (archiveOnAdd === 'no') return;
-                
-                let items = await Zotero.Items.getAsync(ids);
-                
-                for (let item of items) {
-                    // Skip attachments and notes
-                    if (item.isAttachment() || item.isNote()) continue;
-                    
-                    // Get default archive
-                    let archiveName = Zotero.Prefs.get('extensions.gusto.whatarchive');
-                    if (archiveName === 'random') {
-                        archiveName = null;
-                    }
-                    
-                    Zotero.debug('Gusto: Auto-archiving item ' + item.id);
-                    Zotero.GustoCreator.makeRobustLink(archiveName, item, false);
-                }
+        for (let [pref, value] of Object.entries(defaults)) {
+            if (typeof Zotero.Prefs.get(pref) === 'undefined') {
+                Zotero.Prefs.set(pref, value);
             }
         }
-    };
-}
+        
+        this.log(`Archive on add: ${Zotero.Prefs.get('extensions.gusto.archiveonadd', true)}`);
+    },
+    
+    /**
+     * Add context menu items using modern approach
+     */
+    addContextMenuItems(window) {
+        let doc = window.document;
+        
+        // Item context menu
+        let itemMenu = doc.getElementById('zotero-itemmenu');
+        if (itemMenu) {
+            // Add separator
+            let separator = doc.createXULElement('menuseparator');
+            separator.id = 'gusto-separator';
+            itemMenu.appendChild(separator);
+            this.storeAddedElement(separator);
+            
+            // Add menu with submenu
+            let menu = doc.createXULElement('menu');
+            menu.id = 'gusto-menu';
+            menu.setAttribute('data-l10n-id', 'gusto-menu-robustify');
+            
+            let menupopup = doc.createXULElement('menupopup');
+            
+            // Archive now menu item
+            let archiveNow = doc.createXULElement('menuitem');
+            archiveNow.id = 'gusto-archive-now';
+            archiveNow.setAttribute('data-l10n-id', 'gusto-archive-now');
+            archiveNow.addEventListener('command', () => {
+                this.archiveNow(window);
+            });
+            menupopup.appendChild(archiveNow);
+            
+            // Submit to all archives menu item
+            let submitAll = doc.createXULElement('menuitem');
+            submitAll.id = 'gusto-submit-all';
+            submitAll.setAttribute('data-l10n-id', 'gusto-submit-all');
+            submitAll.addEventListener('command', () => {
+                this.submitToAllArchives(window);
+            });
+            menupopup.appendChild(submitAll);
+            
+            // Add separator
+            let menuSeparator = doc.createXULElement('menuseparator');
+            menupopup.appendChild(menuSeparator);
+            
+            // Find Robustified menu item
+            let findRobustified = doc.createXULElement('menuitem');
+            findRobustified.id = 'gusto-find-robustified';
+            findRobustified.setAttribute('data-l10n-id', 'gusto-find-robustified');
+            findRobustified.addEventListener('command', () => {
+                this.findRobustified(window);
+            });
+            menupopup.appendChild(findRobustified);
+            
+            // Preferences menu item
+            let preferences = doc.createXULElement('menuitem');
+            preferences.id = 'gusto-preferences';
+            preferences.setAttribute('data-l10n-id', 'gusto-preferences');
+            preferences.addEventListener('command', () => {
+                this.openPreferences(window);
+            });
+            menupopup.appendChild(preferences);
+            
+            menu.appendChild(menupopup);
+            itemMenu.appendChild(menu);
+            this.storeAddedElement(menu);
+        }
+        
+        // Tools menu
+        let toolsMenu = doc.getElementById('menu_ToolsPopup');
+        if (toolsMenu) {
+            let toolsItem = doc.createXULElement('menuitem');
+            toolsItem.id = 'gusto-tools-preferences';
+            toolsItem.setAttribute('data-l10n-id', 'gusto-tools-preferences');
+            toolsItem.addEventListener('command', () => {
+                this.openPreferences(window);
+            });
+            toolsMenu.appendChild(toolsItem);
+            this.storeAddedElement(toolsItem);
+        }
+    },
+    
+    /**
+     * Archive now action
+     */
+    archiveNow(window) {
+        let items = window.ZoteroPane.getSelectedItems();
+        if (!items || items.length === 0) {
+            window.alert("Please select at least one item to archive.");
+            return;
+        }
+        
+        for (let item of items) {
+            this.robustifyItem(item);
+        }
+    },
+    
+    /**
+     * Submit to all archives action
+     */
+    submitToAllArchives(window) {
+        let items = window.ZoteroPane.getSelectedItems();
+        if (!items || items.length === 0) {
+            window.alert("Please select at least one item to archive.");
+            return;
+        }
+        
+        for (let item of items) {
+            this.submitItemToAllArchives(item);
+        }
+    },
+    
+    /**
+     * Find robustified URLs action
+     */
+    findRobustified(window) {
+        let items = window.ZoteroPane.getSelectedItems();
+        if (!items || items.length === 0) {
+            window.alert("Please select at least one item to check.");
+            return;
+        }
+        
+        this.findRobustifiedForItems(items, window);
+    },
+    
+    /**
+     * Open preferences dialog
+     */
+    openPreferences(window) {
+        window.openDialog(
+            this.rootURI + 'chrome/content/gusto/options.xul',
+            'gusto-preferences',
+            'chrome,centerscreen'
+        );
+    },
+    
+    /**
+     * Notifier callback for new items
+     */
+    notifierCallback: {
+        notify: function(event, type, ids, extraData) {
+            if (event !== 'add' || type !== 'item') return;
+            
+            // Check if auto-archive is enabled
+            if (Zotero.Prefs.get('extensions.gusto.archiveonadd') !== 'yes') return;
+            
+            // Process new items
+            Zotero.setTimeout(() => {
+                for (let id of ids) {
+                    let item = Zotero.Items.get(id);
+                    if (item && !item.isNote() && !item.isAttachment()) {
+                        Zotero.Gusto.prototype.robustifyItem.call(this, item);
+                    }
+                }
+            }, 1000);
+        }.bind(this)
+    },
+    
+    /**
+     * Robustify a single item
+     */
+    robustifyItem: async function(item) {
+        let url = item.getField('url');
+        if (!url) return;
+        
+        this.log('Robustifying item: ' + item.getField('title'));
+        
+        // Use GustoCreator to create robust links
+        let creator = new Zotero.GustoCreator();
+        let archiveUrl = await creator.robustifyUrl(url);
+        
+        if (archiveUrl) {
+            // Add archive URL to extra field
+            let extra = item.getField('extra') || '';
+            if (!extra.includes(archiveUrl)) {
+                extra += (extra ? '\n' : '') + 'Archive: ' + archiveUrl;
+                item.setField('extra', extra);
+                await item.saveTx();
+            }
+        }
+    },
+    
+    /**
+     * Submit item to all archives
+     */
+    submitItemToAllArchives: async function(item) {
+        let url = item.getField('url');
+        if (!url) return;
+        
+        this.log('Submitting to all archives: ' + item.getField('title'));
+        
+        let creator = new Zotero.GustoCreator();
+        await creator.submitToAllArchives(url);
+    },
+    
+    /**
+     * Find robustified URLs for items
+     */
+    findRobustifiedForItems: async function(items, window) {
+        let results = [];
+        
+        for (let item of items) {
+            let url = item.getField('url');
+            if (!url) continue;
+            
+            let creator = new Zotero.GustoCreator();
+            let archives = await creator.findArchives(url);
+            
+            if (archives && archives.length > 0) {
+                results.push({
+                    title: item.getField('title'),
+                    url: url,
+                    archives: archives
+                });
+            }
+        }
+        
+        if (results.length > 0) {
+            let message = "Found robustified URLs:\n\n";
+            for (let result of results) {
+                message += result.title + "\n";
+                for (let archive of result.archives) {
+                    message += "  - " + archive + "\n";
+                }
+                message += "\n";
+            }
+            window.alert(message);
+        } else {
+            window.alert("No robustified URLs found for the selected items.");
+        }
+    }
+};
